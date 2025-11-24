@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import os, sys
 
-st.title("data_driven based Diet Recommendation System")
+st.title("Model Trained Diet Recommendation System") #This is a data driven model
 
 # sys.path.append("../src")
 
