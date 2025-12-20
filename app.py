@@ -14,7 +14,7 @@ st.subheader("Enter your health details here:")
 age = st.number_input("Age", 1, 100, 25)
 gender = st.selectbox("Gender", ["Male", "Female"])
 height_cm = st.number_input("Height (cm) ", 50, 250, 170)
-weight_kg = st.number_input("Weight (cm)", 10, 200, 70)
+weight_kg = st.number_input("Weight (kg)", 10, 200, 70)
 bmi = weight_kg / (height_cm / 100) ** 2
 
 activity_level = st.selectbox("Activity_level", ["Low", "Moderate", "High"])
