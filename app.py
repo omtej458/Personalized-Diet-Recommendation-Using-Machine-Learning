@@ -57,7 +57,7 @@ from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
-import time
+import time,os
 
 # ============================================
 # Cache resources for faster loading
@@ -66,14 +66,23 @@ import time
 def load_ml_model():
     return joblib.load("models/RandomizedSearchCV.pkl")
 
+# @st.cache_resource
+# def initialize_llm():
+#     load_dotenv()
+#     return AzureChatOpenAI(
+#         azure_deployment="gpt-5-chat",
+#         api_version="2024-12-01-preview",
+#         temperature=0.3
+#     )
+
 @st.cache_resource
 def initialize_llm():
-    load_dotenv()
     return AzureChatOpenAI(
-        azure_deployment="gpt-5-chat",
-        api_version="2024-12-01-preview",
-        temperature=0.3
-    )
+    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    deployment_name=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
+    api_version="2024-08-01-preview"
+)
 
 model = load_ml_model()
 llm = initialize_llm()
