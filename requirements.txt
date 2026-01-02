@@ -9,5 +9,4 @@ langchain-openai
 langchain
 dotenv
 langchain-core
-typing
 pydantic
